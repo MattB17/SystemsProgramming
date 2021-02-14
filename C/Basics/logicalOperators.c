@@ -9,6 +9,14 @@ int main() {
     printf("GPA is invalid.\n");
   }
 
+  gpa = 4.9;
+
+  if (!(gpa < 0.0 || gpa > 4.0)) {
+    printf("GPA is valid.\n");
+  } else {
+    printf("GPA is invalid.\n")
+  }
+
   float gpa1 = 3.3;
   float gpa2 = 2.2;
 
@@ -17,6 +25,6 @@ int main() {
   } else {
     printf("Both GPAs are less than 3.0\n");
   }
-  
+
   return 0;
 }
