@@ -4,6 +4,8 @@
 * `file` - determine file type
 * `less` - view file contents
 * `ln` - create hard and symbolic links
+  * `ln file link` to create a hard link
+  * `ln -s item link` to create a soft link - `item` can be a file or directory
 * `ls` - list directory contents
   * can list contents of multiple directories: `ls ~ /usr`
   * can add more details `ls -l`
