@@ -4,6 +4,7 @@
 * `cd` - change directory
 * `cp` - copy files and directories
 * `df` - see the current amount of free space on disk drives
+* `echo` - display a line of text
 * `file` - determine file type
 * `grep` - print lines matching a pattern
 * `head` - output the first part of a file
@@ -19,6 +20,7 @@
 * `man` - displays a command's manual page
 * `mkdir` - create directories
 * `mv` - move/rename files and directories
+* `printenv` - print all environment variables
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
 * `sort` - sort lines of text
