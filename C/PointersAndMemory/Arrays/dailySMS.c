@@ -6,4 +6,5 @@ int main() {
       printf("July %d\n", i + 1);
     }
   }
+  return 0;
 }
