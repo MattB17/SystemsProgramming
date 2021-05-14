@@ -2,6 +2,7 @@
 * `alias` - creates an alias for a command
 * `cat` - concatenate files
 * `cd` - change directory
+* `clear` - clear the screen
 * `cp` - copy files and directories
 * `df` - see the current amount of free space on disk drives
 * `echo` - display a line of text
@@ -9,6 +10,7 @@
 * `grep` - print lines matching a pattern
 * `head` - output the first part of a file
 * `help` - get help for shell builtins
+* `history` - display the contents of the history list
 * `info` - displays a command's info entry
 * `less` - view file contents
 * `ln` - create hard and symbolic links
