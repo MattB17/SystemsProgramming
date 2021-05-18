@@ -1,7 +1,7 @@
 # Exapnsion
 `$((expression))` evaluates `expression`
 * `echo $((2 + 2))` evaluates to 4
-* `echo $(((5**2) * 3))` evaluate to 75 - (5*5)*3
+* `echo $(((5**2) * 3))` evaluate to 75 -> (5*5)*3
 * `echo Five divided by two equals $((5/2)) with $((5%2)) left over` - integer division and modulo arithmetic
 
 We can also make use of brace expansion
@@ -11,7 +11,7 @@ We can also make use of brace expansion
 * `echo a{A{1,2},B{3,4}}b` prints `aA1b aA2b aB3b aB4b`
 * `mkdir {2009..2011}-0{1..9} {2009..2011}-{10..12}` makes a directory for every month from 2009-01 to 2011-12
 
-We can also exapand parameters / variables
+We can also expand parameters / variables
 * `echo $USER` prints your username
 
 Expansion also works for an entire command

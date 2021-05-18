@@ -1,7 +1,7 @@
 # Redirection And Piping
 
 ### Redirection
-I/O redirection lets user specify where standard output goes
+I/O redirection lets users specify where standard output goes
 * use `>` to redicted standard output to another file instead of the screen
 * `ls -l /usr/bin > ls-output.txt` sends the output of `ls -l /usr/bin` to the file `ls-output.txt`
 * errors are not sent to standard output but instead standard error
