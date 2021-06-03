@@ -10,6 +10,9 @@
   * malloc returns a void pointer (generic type) because it doesn't need to know how the memory will be used
   * when we store the returned value in a pointer, the pointer specifies how the memory will be used
     * `int *i_pt = malloc(sizeof(int));`
+  * free memory with `free`
+    * `void free(void *ptr);`
+    * ptr is a single pointer to a memory address that was previously allocated with malloc
 
 ### Command Line Arguments
 
