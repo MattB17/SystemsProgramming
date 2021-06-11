@@ -16,3 +16,7 @@ Converting a string to long
 * can also handle leading spaces and minus sign
   * `char *s = "    -17";`
   * `int i = strtol(s, NULL, 10)` gives -17
+
+* `size_t strlen(const char *s)`
+  * gets length of string pointed to by `s`, not including null terminator
+  * `size_t` is an unsigned integer
