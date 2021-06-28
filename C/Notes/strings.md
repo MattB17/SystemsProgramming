@@ -61,3 +61,14 @@ The `strcpy` call has undefined behaviour
   * safe version of `strcat`
   * `n` is the maximum number of characters, not including the null terminator, that should be copied from `s2` to the end of `s1`
   * it always adds a null terminator to `s1`
+
+* `char *strchr(const char *s, int c);`
+  * searches for a single character in a string - search is done left to write
+  * `s` is the string to search
+  * `c` is the character to search for in the string
+  * returns a pointer to the character that was found, or `NULL` if the character was not found in the string
+
+* `char *strstr(const char *s1, const char *s2)`
+  * searches from left to right in `s1` for the first occurence of `s2`
+  * if `s2` is found in `s1` it returns a pointer to the character in s1 that begins the match with `s2`
+  * otherwise it returns `NULL`
