@@ -53,3 +53,34 @@ Suppose a compiled program `a.out` prints text to the screen
 
 Input and output redirection are not C features
 * they are features of the operating system
+
+Expected results should go to standard output and error messages should go to standard error
+
+### Files
+`FILE *fopen(const char *filename, const char *mode)`
+* opens a file and makes it available as a stream
+* `filename` is the name of the file we want to open
+* `mode` describes how we want to use the file
+  * `"r"` - file opened for reading
+  * `"w"` - file opened for writing
+  * `"a"` - file opened for appending
+* returns a file pointer that can be used when we want to read from the file or write to the file
+* `fopen` could fail because the file does not exist or we might not have the proper permissions to open the file
+  * if `fopen` fails then it returns `NULL` rather than a valid file pointer
+
+`int fclose(FILE *stream)`
+* closes the file pointed to by `stream`
+* if it returns 0 then the close was successful, otherwise it failed
+* f close could fail if called with an invalid file pointer
+
+`char *fgets(char *s, int n, FILE *stream)`
+* `s` is a pointer to memory where text can be stored
+  * on success, `fgets` returns `s`
+  * it signals an error by returning `NULL`
+* `n` is the maximum number of characters that `fgets` is allowed to put in `s`
+  * including a null character at the end of the string
+* `stream` is the source of the data
+* always reads at most `n-1` characters from `stream`
+  * and stops reading when it reaches the end of a line in `stream`
+* fgets can also read from standard input and is sometimes better than scanf because it reads until a newline
+  * scanf reads until a space
