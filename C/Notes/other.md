@@ -20,3 +20,36 @@ If we assign a variable outside of main then it is a global variable that exists
 A character array is an array with a null character after the final string of text
 * ['h', 'e', 'l', 'l', 'o', '\0']
 * so string is just a character array with a null terminator
+
+### Streams
+When using `scanf` we are actually reading from a stream called standard input
+* the default location of standard input is the keyboard
+* this stream's name is `stdin`
+
+When using `printf` the data is actually written to standard output
+* the default location is the screen
+* this stream's name is `stdout`
+
+Errors use the standard error stream
+* it's default location is also the screen
+* this stream's name is `stderr`
+
+You can change the location of output for any stream
+
+In general we have a program that accepts input streams and produces output streams
+
+Streams can refer to more than just the screen or keyboard
+* they can also refer to files, devices, or networks
+* we can also open our own streams
+
+Suppose a compiled program `a.out` reads a number from the keyboard
+* `./a.out` will hang waiting for a user to input a number and then execute
+* now suppose `number.txt` contains a single number
+  * we can redirect the number to our program with `./a.out < number.txt`
+
+Suppose a compiled program `a.out` prints text to the screen
+* `./a.out` will print the text to the screen
+* `./a.out > result.txt` redirects the output to a text file called `result.txt`
+
+Input and output redirection are not C features
+* they are features of the operating system
