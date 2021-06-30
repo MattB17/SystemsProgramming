@@ -82,5 +82,18 @@ Expected results should go to standard output and error messages should go to st
 * `stream` is the source of the data
 * always reads at most `n-1` characters from `stream`
   * and stops reading when it reaches the end of a line in `stream`
-* fgets can also read from standard input and is sometimes better than scanf because it reads until a newline
-  * scanf reads until a space
+* `fgets` can also read from standard input and is sometimes better than `scanf` because it reads until a newline
+  * `scanf` reads until a space
+
+`scanf` is forced to read from standard input
+* `fscanf` can read from any input stream
+
+`int fscanf(FILE *stream, const char *format, ...)`
+* `stream` is the stream from which to read
+* it returns the number of items successfully read
+
+When a program writes to a stream it is written to a file buffer controlled by the operating system
+* this is periodically written to the file on disk
+
+`int fflush(FILE *stream)`
+* requests that the operating system write any changes that are in its buffer
