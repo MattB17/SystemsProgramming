@@ -97,3 +97,13 @@ When a program writes to a stream it is written to a file buffer controlled by t
 
 `int fflush(FILE *stream)`
 * requests that the operating system write any changes that are in its buffer
+
+### Structs
+Structs are used to aggregate data when the data are not necessarily all the same type
+* like arrays but with different types
+
+When arrays are passed to functions, a pointer to the first element in the array is passed
+* so if the function modifies the array, the original array will be modified
+
+For structs, a function gets a copy of the struct
+* the function gets a copy of the entire struct (including any arrays)
