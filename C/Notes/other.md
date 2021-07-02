@@ -107,3 +107,16 @@ When arrays are passed to functions, a pointer to the first element in the array
 
 For structs, a function gets a copy of the struct
 * the function gets a copy of the entire struct (including any arrays)
+
+### Binary Files
+To open a binary file
+* `output_file = fopen("testing.dat", "rb")`
+
+Writing to a binary file
+* `size_t fwrite(const void *ptr, size_t size, size_t nmembm FILE *stream);`
+* `ptr` is a pointer to the data we want to write to the file
+  * typically a pointer to an array or a pointer to an individual variable
+* `size` is the size of each element we are writing to the file
+* `nmemb` is the number of elements we are writing to the file
+* `stream` is the file pointer to which we will write
+* `fwrite` returns the number of elements successfully written to the file or 0 on error
