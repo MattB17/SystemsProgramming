@@ -120,3 +120,12 @@ Writing to a binary file
 * `nmemb` is the number of elements we are writing to the file
 * `stream` is the file pointer to which we will write
 * `fwrite` returns the number of elements successfully written to the file or 0 on error
+
+Reading from a binary file
+* `size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);`
+* `ptr` is a pointer to the memory where the data from the file will be stored
+* `size` is the size of one element
+* `nmemb` is the number of elements to read
+* `stream` is the stream to read from
+* `fread` returns the number of elements successfully read from the file
+  * returns 0 if no elements are read, signaling an error or that the end of the file has been reached
