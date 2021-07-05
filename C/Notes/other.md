@@ -129,3 +129,21 @@ Reading from a binary file
 * `stream` is the stream to read from
 * `fread` returns the number of elements successfully read from the file
   * returns 0 if no elements are read, signaling an error or that the end of the file has been reached
+
+##### wav Files
+
+`wav` files are a binary file for sound
+* a `wav` file has 2 parts
+  * the header which is 44 bytes of data
+    * it contains information about the file including parameters required to play the file in a music program
+  * after the header comes 1 or more 2-byte values
+    * each 2-byte value is called a sample
+    * when a `wav` file is created the audio signal is sampled many thousands of times per second
+    * each of these samples is stored as one of these 2-byte integers
+
+`od` is a linux utility that prints out values found in a binary file
+* `od -A d -j 44 -t d2 short.wav`
+  * `-A d` translates from the default base 8 to base 10
+  * `-j 44` signifies to skip the first 44 bytes of the file - because the header occupies those 44 bytes
+  * `-t d2` means the file consists of 2 byte values
+  * `short.wav` is the file name
