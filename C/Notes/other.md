@@ -108,6 +108,9 @@ When arrays are passed to functions, a pointer to the first element in the array
 For structs, a function gets a copy of the struct
 * the function gets a copy of the entire struct (including any arrays)
 
+C is allowed to insert spaces between members of a struct
+* this is because it may lead to a more favourable layout which makes accesses faster
+
 ### Binary Files
 To open a binary file
 * `output_file = fopen("testing.dat", "rb")`
@@ -147,3 +150,17 @@ Reading from a binary file
   * `-j 44` signifies to skip the first 44 bytes of the file - because the header occupies those 44 bytes
   * `-t d2` means the file consists of 2 byte values
   * `short.wav` is the file name
+
+`int fseek(FILE *stream, long int offset, int whence);`
+* every file maintains a pointer to where it is in the file
+* `fseek` allows us to move this pointer around in the file
+* `stream` is the stream whose position we want to change
+* `offset` is a byte count, specifying how much the file position should change
+* `whence` determines how `offset` is interpreted
+  * `SEEK_SET` is from the beginning of the file
+  * `SEEK_CUR` is from the current file position
+  * `SEEK_END` is from the end of the file
+* `fseek(my_file, -10, SEEK_CUR)` moves the pointer 10 bytes back from the current position
+* move to the beginning of a file with `fseek(my_file, 0, SEEK_SET);`
+
+`void rewind(FILE *stream);` moves to the beginning of `stream`
