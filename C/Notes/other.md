@@ -164,3 +164,11 @@ Reading from a binary file
 * move to the beginning of a file with `fseek(my_file, 0, SEEK_SET);`
 
 `void rewind(FILE *stream);` moves to the beginning of `stream`
+
+### Aliases
+`typedef` allows you to define an alias for a type
+* it is evaluated at compile time
+* you're providing a new name for an existing type
+
+macros allows you to define a keyword that is replaced by a specified string when your program is processed before being compiled
+* a macro is like a function but it happens before compilation so it is much more efficient
