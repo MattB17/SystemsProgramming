@@ -6,20 +6,6 @@
 // include header file
 # include "sorts.h"
 
-typedef struct {
-  char *name;
-  // pointer to a sort function
-  SortFunc_t sort_func;
-} sort_info;
-
-const int NUM_SORTS = 3;
-// initialize array of sort_info structs
-sort_info SORTS[] = {
-  {.name = "bubble", .sort_func = bubble_sort},
-  {.name = "insertion", .sort_func = insertion_sort},
-  {.name = "selection", .sort_func = selection_sort}
-};
-
 // check that the sort is correct
 void check_sort(int *arr, int size) {
   for (int i = 1; i < size; i++) {

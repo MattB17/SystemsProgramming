@@ -2,6 +2,14 @@
 // include header file
 #include "sorts.h"
 
+const int NUM_SORTS = 3;
+// initialize array of sort_info structs
+sort_info SORTS[] = {
+  {.name = "bubble", .sort_func = bubble_sort},
+  {.name = "insertion", .sort_func = insertion_sort},
+  {.name = "selection", .sort_func = selection_sort}
+};
+
 void swap(int *arr, int index1, int index2) {
   int temp = arr[index1];
   arr[index1] = arr[index2];

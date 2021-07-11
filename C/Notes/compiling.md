@@ -80,3 +80,38 @@ When multiple files are required, each file is compiled and assembled separately
 
 A header file is an example of an interface
 * a header should declare what functions do and what types they require without defining how they are actually implemented
+
+If you add variables in a `.h` file and compile separately then the variables are being duplicated in each object file
+* instead declare the variables in the header with the `extern` keyword, but assign in the file
+* `extern const int NUM_SORTS;`
+* `extern sort_info SORTS[];`
+
+If you want the same variable in multiple files you use the `static` keyword
+* `static int x = 0;`
+* without static if you have the same statement in multiple files at the linking stage you will get an error that the variable is defined multiple times
+* `static` makes a global variable local - it is only available in the file in which it is defined
+* if `static` is used for a variable inside a function then that function retains its value across function calls
+* for example, consider the function
+```
+void function_example() {
+  static int x = 3;
+  printf("%d\n", x);
+  x = x + 2;
+}
+```
+* when `function_example` is called the first time it prints `3`, the second time it prints `5` and so on
+
+You can create a define guard in the header to ensure that
+the header file is only defined once
+```
+#ifndef SORTS_H
+#define SORTS_H
+
+<header file stuff>
+
+#endif
+```
+
+A multiply included header will generate errors
+
+Compiler toolchain includes a tool `make` to track dependencies and determine which files need to be recompiled
