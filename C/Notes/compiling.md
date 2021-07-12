@@ -115,3 +115,24 @@ the header file is only defined once
 A multiply included header will generate errors
 
 Compiler toolchain includes a tool `make` to track dependencies and determine which files need to be recompiled
+
+makefiles are composed of a sequence of rules
+* each rule has a target - the file to be constructed
+* each rule also has a recipe - a command or list of commands to execute to create the target
+* if dependencies or pre-requisites are present the recipe is executed if one or more of the dependencies is newer than the target
+* if there are no dependencies, the recipe is only executed if the target doesn't exist
+```
+target: dependencies ...
+  recipe
+```
+* the white space before the `recipe` is a tab, not just spaces
+
+When you run the command `make` it looks for a `Makefile` in the local directory and executes the rules it contains
+
+example rule
+```
+compare_sorts: compare_sorts.c sorts.c
+  gcc compare_sorts.c sorts.c -o compare_sorts
+```
+
+with make if a dependency is also a target in the makefile it will execute that rule first
