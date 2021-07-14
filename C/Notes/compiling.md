@@ -252,3 +252,6 @@ The preprocessor is an important part of the compiler toolchain
   * header files depend entirely on preprocessor support
 
 Function-like macros exist but are not recommended
+
+Macros do not declare types, which is a weakness
+* most compilers also don't include macros in their debugging information

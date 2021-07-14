@@ -185,3 +185,16 @@ int page_flag = 9;
 page_flag &= ~(1 << 0);
 ```
 This clears the 0th bit of `page_flag`. So now `page_flag` is `1000` which is 8
+
+### Enum
+```
+enum page_flags {
+  PAGE_PRESENT,
+  PAGE_PROT,
+  PAGE_RW,
+  PAGE_USER,
+  PAGE_DIRTY,
+  PAGE_ACCESSED
+};
+```
+* `PAGE_PRESENT` is automatically associated with 0
