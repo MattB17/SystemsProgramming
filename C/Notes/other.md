@@ -172,3 +172,16 @@ Reading from a binary file
 
 macros allows you to define a keyword that is replaced by a specified string when your program is processed before being compiled
 * a macro is like a function but it happens before compilation so it is much more efficient
+
+### Bitwise Operations
+```
+int page_flag = 0;
+page_flag |= 1 << 3;
+```
+This sets the 3rd bit of `page_flag` to `1`. So now `page_flag` is `1000` which is 8
+
+```
+int page_flag = 9;
+page_flag &= ~(1 << 0);
+```
+This clears the 0th bit of `page_flag`. So now `page_flag` is `1000` which is 8

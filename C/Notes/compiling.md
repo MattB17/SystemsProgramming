@@ -136,3 +136,119 @@ compare_sorts: compare_sorts.c sorts.c
 ```
 
 with make if a dependency is also a target in the makefile it will execute that rule first
+
+### C Preprocessor
+Any line that begin with a `#` is a preprocessor directive
+* preprocessor directives are used to modify C source code before it is compiled
+
+The preprocessor is useful for changing how your program based on conditions at the time that the program is compiled
+
+Examples:
+* `ex1.c`
+```
+#define MY_INT (42)
+
+int x = MY_INT;
+```
+  * `cpp ex1.c` executes the preprocessor on `ex1.c`
+    * the preprocessor transforms the code by executing all the directives and expanding all the macros
+    * this creates a stream of tokens that are passed to the compiler's parser
+  * when the preprocessor executes `#define MY_INT (42)` all instances of `MY_INT` are replaced by the string `(42)`
+
+* `ex2.c`
+```
+#define MY_INT (6 * LUCKY_NUM)
+#define LUCKY_NUM (7)
+
+int x = MY_INT;
+```
+  * even nested macros are expanded - so `MY_INT` is `(42)`
+
+* `ex3.c`
+```
+#include <stdio.h>
+
+int main() {
+  printf("Line %d: %s compiled on %s at %s.\n", __LINE__, __FILE__, __DATE__, __TIME__);
+  return 0;
+}
+```
+  * the preprocessor also includes several pre-defined macros
+  * these macros are usually defined on all systems
+
+* `ex4.c`
+```
+#include <stdio.h>
+
+int main() {
+  printf("Compiled on linux? %d\n", __gnu_linux__);
+  printf("Compiled on OS X? %d\n", __APPLE__);
+  return 0;
+}
+```
+  * some macros are only defined on some systems
+    * this is useful if you need your code to behave differently on different systems
+
+* `ex5.c`
+```
+#include <stdio.h>
+
+#if __APPLE__
+const char OS_STR[] = "OS/X";
+#elif __gnu_linux__
+const char OS_STR[] = "gnu/linux";
+#else
+const char OS_STR[] = "unknown";
+#endif
+
+int main() {
+  printf("Compiled on %s\n", OS_STR);
+  return 0;
+}
+```
+
+* `ex6.c`
+```
+#include <stdio.h>
+
+#ifdef __APPLE__
+const char OS_STR[] = "OS/X";
+#elif defined(__gnu_linux__)
+const char OS_STR[] = "gnu/linux";
+#else
+const char OS_STR[] = "unknown";
+#endif
+
+int main() {
+  printf("Compiled on %s\n", OS_STR);
+  return 0;
+}
+```
+  * same as last example
+
+* `ex7.c`
+```
+#include <stdio.h>
+
+int main() {
+  #ifdef DEBUG
+  printf("Running in debug mode at level %d\n", DEBUG);
+  #endif
+
+  return 0;
+}
+```
+  * preprocessor is often used to turn on debugging information when the developer needs additional information
+  * we can define macros on the command line using the `-D` flag
+    * `gcc -D DEBUG ex7.c` - by default the macro is defined with value 1, which is true
+    * `gcc -D DEBUG=3 ex7.c` - we can set it to take another value
+    * this can allow us to quickly reconfigure a system to provide varying amounts of debugging information
+
+The preprocessor is an important part of the compiler toolchain
+* consider `#include "sorts.h"`
+  * the C compiler processes a single file at a time
+  * the preprocessor is used to create a single file that contains the contents of header files and the source file being compiled
+  * in this case the entire header file is copied into the file being compiled
+  * header files depend entirely on preprocessor support
+
+Function-like macros exist but are not recommended
