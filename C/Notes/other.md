@@ -198,3 +198,25 @@ enum page_flags {
 };
 ```
 * `PAGE_PRESENT` is automatically associated with 0
+
+### Linked Structures
+A linked structure uses pointers to increase the number of items in the structure as needed
+
+|       | Array | Linked Structure |
+|:-----:|:-----:|:----------------:|
+| Implementation | built into C language | user-defined |
+| Access and Storage | use indices to fetch and store | requires a "traverse" function to go over elements in the structure |
+| Size | fixed size | dynamic size |
+
+Linked List Node
+```
+struct node {
+  int value;
+  struct node *next;
+};
+```
+
+Linked list nodes are usually scattered throughout memory as they are allocated on the heap
+
+Array cells are allocated next to each other
+* `arr[i]` is translated to `*(arr + i)`
