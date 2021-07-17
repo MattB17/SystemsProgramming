@@ -63,5 +63,38 @@ int insert(Node *new_node, Node **list, int idx) {
 }
 
 Node *delete(Node **list, int idx) {
-  return NULL;
+  if (idx < 0) {
+    return NULL;
+  }
+
+  Node *to_remove = *list;
+  int curr_index = 0;
+
+  // traverse to right spot
+  while (to_remove && curr_index < idx) {
+    to_remove = to_remove->next;
+    curr_index++;
+  }
+
+  // check for invalid index / null list
+  if (!to_remove || curr_index != idx) {
+    return NULL;
+  }
+
+  // if we're at the fornt of the list we need to move to the second node
+  if (idx == 0) {
+    *list = to_remove->next;
+  // otherwise update the prev pointer
+  } else {
+    to_remove->prev->next = to_remove->next;
+  }
+
+  // make sure we're not at the end of the list
+  if (to_remove->next) {
+    to_remove->next->prev = to_remove->prev;
+  }
+
+  to_remove->prev = to_remove->next = NULL;
+
+  return to_remove;
 }
