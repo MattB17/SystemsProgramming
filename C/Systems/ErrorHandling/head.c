@@ -51,6 +51,12 @@ int main(int argc, char **argv) {
       fprintf(stderr, "ERROR: not enough lines in the file.\n");
       exit(1);
     }
+    while (strchr(buf, '\n') == NULL) {
+      if ((fgets(buf, BUFSIZE, fp)) == NULL) {
+        fprintf(stderr, "ERROR: not enough lines in the file.\n");
+        exit(1);
+      }
+    }
     printf("%s", buf);
   }
 

@@ -174,6 +174,8 @@ macros allows you to define a keyword that is replaced by a specified string whe
 * a macro is like a function but it happens before compilation so it is much more efficient
 
 ### Bitwise Operations
+0 is False and 1 is True
+
 ```
 int page_flag = 0;
 page_flag |= 1 << 3;
@@ -185,6 +187,44 @@ int page_flag = 9;
 page_flag &= ~(1 << 0);
 ```
 This clears the 0th bit of `page_flag`. So now `page_flag` is `1000` which is 8
+
+Logical operators
+* `1 && 1 = 1`
+* `1 && 0 = 0`
+* `0 && 1 = 0`
+* `0 && 0 = 0`
+* logical operator looks at both arguments and returns 1 if both arguments have a value other than 0
+  * `8 && 8 = 1`
+  * `8 && 1 = 1`
+  * `8 && 0 = 0`
+
+Bit operators
+* `1 & 1 = 1`
+* `1 & 0 = 0`
+* `0 & 1 = 0`
+* `0 & 0 = 0`
+* performs the `&` operator on each pair of bits
+  * `8 & 8 = 1`
+  * `8 & 1 = 0`
+  * `8 & 0 = 0`
+
+Bitwise exclusive or (XOR)
+* `1 ^ 1 = 0`
+* `1 ^ 0 = 1`
+* `0 ^ 1 = 1`
+* `0 ^ 0 = 0`
+
+Bitwise Negation
+* `~0 = 1`
+* `~1 = 0`
+* flips every bit in the variable
+
+Bitwise Shifts
+* `<<` shift left
+* `>>` shift right
+
+`1 << 3` shifts 1 3 positions
+* so `0001` -> `0010` -> `0100` -> `1000` which gives 8
 
 ### Enum
 ```
