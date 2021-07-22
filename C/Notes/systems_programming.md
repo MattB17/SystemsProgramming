@@ -77,3 +77,7 @@ When a system call fails it returns -1 or NULL to indicate error
 It's good practice to use `exit` instead of `return`
 * `return` in main will terminate the program
 * but it's good practice to use `exit` as errors in functions won't terminate the program if you call `return` but will instead exit to the caller
+
+Error checking and appropriate error messages are important for several reasons
+* users of your program need useful messages if they use your program incorrectly or if the program fails
+* checking for errors helps you discover bugs in your program more quickly
