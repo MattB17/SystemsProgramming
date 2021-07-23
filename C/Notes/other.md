@@ -226,6 +226,9 @@ Bitwise Shifts
 `1 << 3` shifts 1 3 positions
 * so `0001` -> `0010` -> `0100` -> `1000` which gives 8
 
+Flag bits are commonly used when a single variable is used to transmit data about multiple options
+* that variable is an array of bits in which each bit represents an option with 1 being the option is on
+
 ### Enum
 ```
 enum page_flags {
@@ -260,3 +263,32 @@ Linked list nodes are usually scattered throughout memory as they are allocated 
 
 Array cells are allocated next to each other
 * `arr[i]` is translated to `*(arr + i)`
+
+### File Permissions in Linux
+Each file has an owner and a group
+
+`ls -l` prints output like
+* `-rw-r--r-- 1 mbuckley instrs 302 Jul 29 14:39 ptr.c`
+  * the first part is permissions representing who can read, write, or execute the file
+  * the third column `mbuckley` is the owner of the file
+  * the fourth column is the group
+* the owner and group fields are relevant to permissions because Linux allows us to set separate permissions for the owner of the file, the group, and every other user
+
+Consider file permission string `-rwxr-xr-x`
+* the first `-` is the file type
+  * this represents a regular file
+  * `d` would represent a directory
+  * `l` would represent a link
+* the next 3 `rwx` means the owner has read, write and execute permissions on the file
+* the next 3 `r-x` means the group has read and execute permissions on the file but cannot write
+* the last 3 `r-x` means all other users have read and execute permissions on the file but cannot write
+
+Ignoring the initial file type in permissions
+* all other permissions are on/off switches which can be represented as a bit
+* you need 9 bits to represent the 9 permissions
+* syscalls that operate on permissions use a `mode_t` type
+* ie `r--r--r--` would be represented as `100100100`
+
+One syscall that operates on file permissions is `chmod`
+* `chmod` is used to change file modes or Access Control Lists
+* chmod values are done in octal
