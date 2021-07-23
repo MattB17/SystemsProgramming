@@ -292,3 +292,32 @@ Ignoring the initial file type in permissions
 One syscall that operates on file permissions is `chmod`
 * `chmod` is used to change file modes or Access Control Lists
 * chmod values are done in octal
+
+A bit mask is a carefully constructed value where specific elements are set or not set and then apply the mask to set or unset those values
+* ie. `bit_array | (1 << 10)` to set the 10th bit
+* the `(1 << 10)` is the bit mask
+
+### Set Implementation
+```
+unsigned short bit_array;
+// the range of values the set can contain is 0 - 15
+// if we use unsigned int than the set can contain 0 - 31
+
+// to add 10 to the set
+bit_array = bit_array | (1 << 10);
+
+// remove 10 from the set
+// all bits are 1 except for bit 10
+bit_array = bit_array & ~(1 << 10);
+
+// can do an array of unsigned ints
+// so each int can contain 0 - 31
+unsigned int bit_array[N];
+
+// set bit at index 34 to 1
+// 34 / 32 = 1 (integer division) is the integer containing
+// the 34th bit
+// 34 % 32 = 2 so it is the bit at index 2 in integer at index 1
+int index = 34 / 32;
+bit_array[index] = bit_array[index] | 1 << (34 % 32);
+```
