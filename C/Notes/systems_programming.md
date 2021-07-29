@@ -86,5 +86,36 @@ Error checking and appropriate error messages are important for several reasons
 Signals are a mechanism that allows a process or the operating system to interrupt a currently running process and notify that an event has occurred
 
 Each signal is identified by a number between 1 and 31 and defined constants are used to give them names
+* each has a default action associated with it
 
 There is a library function `kill` and a bash program also called `kill`
+
+There are times we want to change the default action of a signal
+* to print a message, to save some state, or to ignore the signal
+
+The process control block (PCB) contains a signal table
+* each entry contains a pointer to code which will be executed when the system delivers a signal to the process
+* this is called the signal handling function
+* we can change the behaviour of a signal by installing a new signal handling function
+
+The `sigaction()` system call will modify the signal table so that our function is called instead of the default action
+
+`int sigaction(int signum, const struct sigaction *act, struct sigaction *oldact);`
+* `signum` is the number of the signal that we are going to modify
+* `act` is a pointer to a struct that we need to intialize before calling `sigaction`
+* `oldact` pointer to a struct that will hold the previous state of the signal when sigaction returns
+
+```
+struct sigaction {
+  void       (*sa_handler)(int);
+  void       (*sa_sigaction)(int, siginfo_t *, void *);
+  sigset_t     sa_mask;
+  int          sa_flags;
+  void       (*sa_restorer)(void);
+}
+```
+* `sa_handler` is the function pointer for the signal handler we are installing
+
+There are 2 signals you can't change
+* SIGKILL
+* SIGSTOP
