@@ -81,3 +81,10 @@ It's good practice to use `exit` instead of `return`
 Error checking and appropriate error messages are important for several reasons
 * users of your program need useful messages if they use your program incorrectly or if the program fails
 * checking for errors helps you discover bugs in your program more quickly
+
+### Signals
+Signals are a mechanism that allows a process or the operating system to interrupt a currently running process and notify that an event has occurred
+
+Each signal is identified by a number between 1 and 31 and defined constants are used to give them names
+
+There is a library function `kill` and a bash program also called `kill`
