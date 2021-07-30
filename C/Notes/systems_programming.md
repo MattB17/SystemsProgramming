@@ -201,3 +201,23 @@ To duplicate a process the operating system copies the original process' address
 `fork` might fail if there are too many processes for a user or across the whole system
 
 The operating system controls the order that the processes run
+
+The process we run from the shell is a child of the shell process
+* the shell uses the `wait` system call to suspend itself until it's child terminates
+
+`wait(int *stat_loc);`
+* can use the `wait` system call to force the parent process to wait until it's children have terminated
+* information about how the child terminated is stored in `stat_loc`
+* if `wait` is successful, it returns the process ID of the child that terminated
+  * otherwise it returns -1
+* when a process calls `exit` or returns from main it returns -1 or 0
+  * this is the value set in `stat_loc`
+  * by convention 0 indicates that the program terminated successfully
+  * a non-zero value usually indicates an unsuccessful termination
+
+`waitpid(pid_t pid, int *stat_loc, int options);`
+* lets you specify which child process to wait for
+
+`wait` and `waitpid` only wait for a child process
+* you cannot wait for an unrelated process or a child of a child process
+* for more powerful communication between processes you can use a pipe or a signal
