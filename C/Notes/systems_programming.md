@@ -195,6 +195,8 @@ To duplicate a process the operating system copies the original process' address
   * however we don't know whether the parent process or the child process will execute first
   * when the operating system is finished creating the new process control can be returned to either the parent or the child
 * the parent and child processes are completely different processes and don't share memory
+* if the parent and child are both producing output, the order of output is unpredictable
+  * and could change on each run
 
 `fork` might fail if there are too many processes for a user or across the whole system
 
