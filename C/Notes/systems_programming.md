@@ -119,3 +119,83 @@ struct sigaction {
 There are 2 signals you can't change
 * SIGKILL
 * SIGSTOP
+
+### Processes
+A program is a set of executable instructions
+* source code
+* compiled machine code
+
+A process is a running instance of a program
+
+When a program is loaded into memory for the purpose of executing the program, the memory layout has the following structure
+```
+---------------
+---------------
+     Code
+---------------
+    Globals
+---------------
+     Heap
+---------------
+    Unused
+---------------
+     Stack
+---------------
+      OS
+---------------
+```
+
+The stack holds the function that is currently executing and any local variables
+
+The operating system keeps track of some additional state for a process in the PCB (Process Control Block)
+
+```
+-------------------
+| PID |           |
+-------------------
+| PC  |           |
+-------------------
+| SP  |           |
+-------------------
+| Open file table |
+-------------------
+|   Signal table  |
+-------------------
+|       ...       |
+-------------------
+```
+* PID is the process ID
+* SP is the stack pointer that defines the top of the stack
+* PC is the program counter that identifies the instruction in the code
+
+The process control block stores
+* the current value of important registers
+* any open file descriptors
+* and other state that the operating system manages
+
+The number of processors (CPUs) determine how many processes can be running at the same time
+
+Processes can be in 3 different states
+* running - one per processor
+* ready - could run if there was another processor
+* blocked - processes waiting for an event to occur
+
+The operating system gives us the illusion of many running processes by switching between the ready and running states
+
+Creating a process requires a system call because the operating system must set up data structures as the process control block that are needed by the new process
+
+When a process calls `fork()` it transfers control to the operating system
+
+To duplicate a process the operating system copies the original process' address space, its data, and it's PCB that keeps track of the current state of the process
+* as a result, the newly created process is running the same code, has the same values for all variables in memory and has the same value for the program counter and stack pointer
+* the newly created process gets a unique process ID
+* the return value of `fork()` is different between the two processes
+* the original process is the parent and the newly created process is the child
+* when the child process runs it starts executing just after `fork()` returns
+  * however we don't know whether the parent process or the child process will execute first
+  * when the operating system is finished creating the new process control can be returned to either the parent or the child
+* the parent and child processes are completely different processes and don't share memory
+
+`fork` might fail if there are too many processes for a user or across the whole system
+
+The operating system controls the order that the processes run
