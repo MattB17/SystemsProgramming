@@ -231,3 +231,53 @@ The process with PID 1 is the `init` process, the first process that the operati
 * a zombie process is cleaned up after its termination status has been collected
 * the main task of the `init` process is to call wait in a loop for all the termination statuses of the processes it has adopted
 * after the `init` process has collected the termination status of an orphaned process, all of the process's data structures can be deleted
+
+Linux provides the exec family of functions to replace the currently running process with a different executable
+* when a process calls `execl`, control is passed to the operating system
+* while performing `execl`, the file system finds the file containing the executable program and loads it into memory where the code segment is
+  * it also initializes a new stack
+  * the program counter and stack pointer are updated so that the first instruction to execute when control returns to the user level is the first instruction in the new program
+* the program passed to `execl` is the compiled program, not source code
+* when control returns to the user level process, the original code that called exec is gone
+  * `execl` won't return if successful
+  * however it will return if it was not successful and it wasn't able to load the program
+* exec does not create a new process, instead it asks the OS to modify the current process
+  * so the process has the same process ID before and after calling exec
+
+The shell is a process and it uses `fork` and `exec`
+* when you type a command at a shell prompt
+  * the shell first calls fork to create a new process
+  * then the shell calls exec to load a different program into the memory of the child process
+  * typically, the shell then calls wait and blocks until the child finishes executing
+  * when the wait call returns, the shell prints a prompt indicating it is ready to receive the next command
+
+### Pipes
+Collecting data into larger chunks allows the file system decide exactly when to send the data to the disk, network, or screen
+* and to amortize the cost of data transfer by reducing the number of system calls made
+* delegating these tasks allows the programmer to ignore the details of data transfer
+
+File descriptors are of type int because the operating system uses them as an index into a file descriptors table of open files
+* stdout is file descriptor 0
+* stdin is file descriptor 1
+* stderr is file descriptor 2
+
+```
+// Open a file using a FILE object
+FILE *fp = fopen("file1.txt", "r");
+
+// Open a file using a file descriptor
+int filedes = open("file1", O_RDONLY);
+
+// create a pipe
+int fd[2]; // Array of 2 file descriptors
+pipe(fd);
+
+// read 256 bytes from file
+read(filedes, buf, 256);
+
+// read 256 bytes from pipe
+read(fd[0], buf, 256);
+```
+
+Pipes are a form of interprocess communication that also uses file descriptors
+* the same read and write system calls can be used for for both files and pipes
