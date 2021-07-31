@@ -221,3 +221,13 @@ The process we run from the shell is a child of the shell process
 `wait` and `waitpid` only wait for a child process
 * you cannot wait for an unrelated process or a child of a child process
 * for more powerful communication between processes you can use a pipe or a signal
+
+A zombie process is a process that is dead but is still hanging around for the parent to collect its termination status
+
+We call the child process an orphan when the parent terminates first
+
+The process with PID 1 is the `init` process, the first process that the operating system launches
+* when a process becomes an orphan, it is adopted by the `init` process
+* a zombie process is cleaned up after its termination status has been collected
+* the main task of the `init` process is to call wait in a loop for all the termination statuses of the processes it has adopted
+* after the `init` process has collected the termination status of an orphaned process, all of the process's data structures can be deleted
