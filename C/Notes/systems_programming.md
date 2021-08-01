@@ -281,3 +281,35 @@ read(fd[0], buf, 256);
 
 Pipes are a form of interprocess communication that also uses file descriptors
 * the same read and write system calls can be used for for both files and pipes
+* a pip is specified by 2 file descriptors
+  * one for reading data from the pipe
+  * one for writing data to the pipe
+
+```
+int main() {
+  int fd[2];
+
+  pipe(fd);
+  int r = fork();
+
+  // in parent
+  if (r > 0) {
+    close(fd[0]);
+  // in child
+  } else if (r == 0) {
+    close(fd[1]);
+  }
+}
+```
+
+When a program calls a pipe system call the operating system creates the pipe data structures and opens two file descriptors on the pipe - one for reading and one for writing
+* these two file descriptors are stored in the array that we pass into the pipe
+* the first element of the array will be the file descriptor for reading and the second element will be the file descriptor for writing
+* after the pipe call returns, the process can now read and write on the pipe
+
+When `fork` makes a copy of a process it also makes a copy of all open file descriptors
+* so the child process inherits all open file descriptors
+* so in the code above, after fork is called, both processes have read and write file descriptors on the pipe
+* pipes are unidirectional - one process will write to the pipe and another process will read from the pipe
+* file descriptors not used need to be closed
+* ie if the parent writes and the child reads then the parent needs to close the read file descriptor and the child needs to close the write file descriptor
