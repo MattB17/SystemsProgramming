@@ -313,3 +313,40 @@ When `fork` makes a copy of a process it also makes a copy of all open file desc
 * pipes are unidirectional - one process will write to the pipe and another process will read from the pipe
 * file descriptors not used need to be closed
 * ie if the parent writes and the child reads then the parent needs to close the read file descriptor and the child needs to close the write file descriptor
+
+Pipes are used to communicate between 2 independent processes
+* but it is up to the operating system to decide when these processes actually run
+* it is possible the processes won't run in lock-step with each other
+
+The producer consumer problem
+* one process is writing or producing data
+* another process is reading or consuming data
+* they are connected by a queue
+* the producer and consumer may not work at the same rate
+* if the consumer is too slow then the data can pile up - we don't want the producer to put data into a full queue
+* if the consumer is faster than the producer then the consumer will not have enough data to operate on - we need to ensure that a consumer doesn't try to remove data from an empty queue
+* we also don't want the producer and consumer to operate on the queue simultaneously
+
+The pipe is a queue data structure in the operating system
+* the process writing to the pipe is the producer
+* the process reading from the pipe is the consumer
+* since the operating system manages the pipe data structure it ensures that only one process is modifying it at a time
+* the OS handles the consumer reading from the pipe when it is empty - the read call will block if the pipe is empty
+* when the producer operate more quickly than the consumer the pipe will eventually fill up
+  * to prevent data from being lost the OS will cause a write to the pipe to block until there is space in the pipe
+
+`dup2` is a system call
+* it makes a copy of an open file descriptor
+
+A file descriptor is really an index into a table
+* each process has its own set of file descriptors
+* each process has its own file descriptor table
+  * this table is stored in the process control block
+  * it contains pointers to data structures that contain information about open files
+  * the 0th index in the file descriptor table usually contains a link to the console
+
+For the shell to execute a program it first needs to call `fork` to create a new process
+* when a child process is created it obtains a copy of the file descriptor table from its parent
+* even though the file descriptor tables are separate, the pointers in them may point to the same object
+  * that's because file objects are shared
+  * changes will be observed by both processes
