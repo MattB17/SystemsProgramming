@@ -355,3 +355,20 @@ The shell pipe operator allows us to connect 2 processes so that the standard ou
 
 We need to close the write end of the pipe
 * so that the read end of the pipe knows that there is nothing more to read
+
+Suppose we have a parent process that has forked a child
+* and suppose it has successfully set up a pipe between itself and the child for it to read from and the child to write to
+* if the child has not written when read is called then the parent blocks and cannot execute the next instruction, instead it is stuck waiting for the child
+* when the child writes to the pipe, then the read returns
+* read on a pipe blocks until there is something to read or the other of the pipe is closed
+  * when there is action on the pipe, the read returns and the program continues
+
+Assume instead a situation where 1 parent has 2 children and a pipe for each
+* child1 writes to pipe1 and child2 writes to pipe2
+* suppose the parent calls read on pipe1 first and then on pipe2
+  * it could be the case that child2 writes first and so the parent is blocked still waiting on child1
+  * then pipe2 fills and blocks, so child2 is also blocked
+  * no matter how we order the read calls we can't be guaranteed not to be waiting for 1 child while the other child has data ready to be read
+
+`select` lets us specify a set of file descriptors and then blocks until at least one of them is ready for attention
+* then `select` tells us which file descriptors are ready so that we can avoid blocking on the non-ready ones
