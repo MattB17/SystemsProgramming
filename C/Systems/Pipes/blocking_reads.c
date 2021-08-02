@@ -39,7 +39,7 @@ int main() {
     } else if (r == 0) {
       // we are in the child
       close(pipe_child1[0]);
-      handle_child2(pip_child2);
+      handle_child2(pipe_child2);
       exit(0);
     } else {
       // we are in the parent

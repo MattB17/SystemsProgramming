@@ -372,3 +372,18 @@ Assume instead a situation where 1 parent has 2 children and a pipe for each
 
 `select` lets us specify a set of file descriptors and then blocks until at least one of them is ready for attention
 * then `select` tells us which file descriptors are ready so that we can avoid blocking on the non-ready ones
+
+`int select(numfd, read_fds, write_fds, error_fds, timeout)`
+* caller specifies a set of file descriptors to watch
+* `write_fds` is used to check which file descriptors are ready for writing
+* `error_fds` is used to check which file descriptors have errors pending
+* `timeout` is a pointer to struct `time_val`
+  * can be used to set a time limit on how long select will block before returning, even if no file descriptors are ready
+
+consider `int select(numfd, read_fds, NULL, NULL, NULL)`
+* `select` blocks until one of these file descriptors has data to be read or the resource is closed
+* in either case the user is now certain that calling read on that file descriptor will not cause read to block
+* `select` modifies `read_fds` so that when it returns it only includes the file descriptors that are ready for reading
+* `select` will block until at least one of the file descriptors is ready
+  * when it returns, `read_fds` will only contain the file descriptors that are ready
+  * `read_fds` is modified by select, so if we want to wait for multiple files in a loop we will need to reinitialize the set
