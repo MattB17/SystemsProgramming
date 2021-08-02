@@ -350,3 +350,8 @@ For the shell to execute a program it first needs to call `fork` to create a new
 * even though the file descriptor tables are separate, the pointers in them may point to the same object
   * that's because file objects are shared
   * changes will be observed by both processes
+
+The shell pipe operator allows us to connect 2 processes so that the standard output for one process becomes the standard input for the next process
+
+We need to close the write end of the pipe
+* so that the read end of the pipe knows that there is nothing more to read
