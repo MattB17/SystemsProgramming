@@ -23,6 +23,7 @@
 * `mkdir` - create directories
 * `mv` - move/rename files and directories
 * `printenv` - print all environment variables
+* `ps aux` - shows all running processes
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
 * `sort` - sort lines of text

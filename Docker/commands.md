@@ -37,7 +37,7 @@
   * to name your container
 
 ### Examples
-NGINX
+nginx
 * `docker container run --publish 80:80 nginx`
   * downloaded image `nginx` from Docker Hub
   * started a new container from that image
@@ -52,3 +52,12 @@ NGINX
   * very useful if running in detach mode
 * `docker container top webhost`
   * see the running processes of `webhost`
+
+mongo
+* `docker run --name mongo --detach mongo`
+
+httpd (apache)
+* `docker container run --detach --name webserver --publish 8080:80 httpd`
+
+mysql
+* `docker container run --detach --publish 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql`
