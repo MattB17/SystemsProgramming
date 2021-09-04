@@ -7,12 +7,20 @@
   * check your versions and that docker is working
 * `docker info`
   * shows most configuration values for the engine
+* `docker pull`
+  * pulls an image
+  * ie. `docker pull alpine` to pull the alpine image
+
+### Container Commands
 * `docker container run`
   * stats a new container from an image
   * `docker run` is the old way of using the command
   * always starts a new container
+  * use the `-it` option to run interactively
+    * `docker container run -it`
 * `docker container start`
   * to start an existing stopped container
+  * to start interactively do `docker container start -ai`
 * `docker container ls`
   * list running containers
   * `docker ps` is the old way of using the command
@@ -29,35 +37,30 @@
 * `docker container rm`
   * remove (delete) one or more containers
   * `docker rm` is the old way of using the command
+* `docker container inspect`
+  * details of one container config
+  * show metadata about the container (startup, config, volumes, networking, etc)
+  * shown in a JSON format
+* `docker container stats`
+  * performance stats for all containers
+  * show live performance data for all containers
+* `docker container exec -it`
+  * run additional command in existing container
+  * runs an additional process on an existing running container
+
+### Image
+* `docker image ls`
+  * list all pulled images
 
 ### Options
 * `--detach`
   * run in the background
+  * can also do `-d`
 * `--name`
   * to name your container
-
-### Examples
-nginx
-* `docker container run --publish 80:80 nginx`
-  * downloaded image `nginx` from Docker Hub
-  * started a new container from that image
-  * opened port 80 on the host IP
-  * routes that traffic to the container IP, port 80
-* `docker container run --publish 80:80 --detach nginx`
-  * same as above but run it in the background
-* `docker container run --publish 80:80 --detach --name webhost nginx`
-  * name the container `webhost`
-* `docker container logs webhost`
-  * see logs of `webhost`
-  * very useful if running in detach mode
-* `docker container top webhost`
-  * see the running processes of `webhost`
-
-mongo
-* `docker run --name mongo --detach mongo`
-
-httpd (apache)
-* `docker container run --detach --name webserver --publish 8080:80 httpd`
-
-mysql
-* `docker container run --detach --publish 3306:3306 --name db -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql`
+* `-t`
+  * `--pseudo-tty`
+  * simulates a real terminal, like what SSH does
+* `-i`
+  * `--interactive`
+  * keeps session open to receive terminal input
