@@ -14,6 +14,8 @@ nginx
   * very useful if running in detach mode
 * `docker container top webhost`
   * see the running processes of `webhost`
+* `docker container inspect --format '{{ .NetworkSettings.IPAddress }}' webhost`
+  * to see IP address where `webhost` is running
 
 mongo
 * `docker run --name mongo --detach mongo`
