@@ -1,4 +1,4 @@
-# Exapnsion
+# Expansion
 `$((expression))` evaluates `expression`
 * `echo $((2 + 2))` evaluates to 4
 * `echo $(((5**2) * 3))` evaluate to 75 -> (5*5)*3

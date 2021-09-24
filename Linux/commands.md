@@ -2,6 +2,9 @@
 * `alias` - creates an alias for a command
 * `cat` - concatenate files
 * `cd` - change directory
+* `chgrp` - change a file's group ownership
+* `chmod` - change a file's mode
+* `chown` - change a file's owner
 * `clear` - clear the screen
 * `cp` - copy files and directories
 * `df` - see the current amount of free space on disk drives
@@ -11,6 +14,7 @@
 * `head` - output the first part of a file
 * `help` - get help for shell builtins
 * `history` - display the contents of the history list
+* `id` - display user identity
 * `info` - displays a command's info entry
 * `less` - view file contents
 * `ln` - create hard and symbolic links
@@ -22,14 +26,18 @@
 * `man` - displays a command's manual page
 * `mkdir` - create directories
 * `mv` - move/rename files and directories
+* `passwd` - change a user's password
 * `printenv` - print all environment variables
 * `ps aux` - shows all running processes
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
 * `sort` - sort lines of text
+* `su` - run a shell as another user
+* `sudo` - execute a command as another user
 * `tail` - output the last part of a file
 * `tee` - read from standard input and write to standard output and files
 * `type` - indicates how a command name is interpreted
+* `umask` - set the default file permissions
 * `unalias` - remove an alias
 * `uniq` - report or omit repeated lines
 * `wc` - print newline, word, and byte counts for each file

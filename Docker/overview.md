@@ -24,3 +24,6 @@ Containers aren't mini-VMs
 * they are just processes
 * limited to what resources they can access
 * exit when process stops
+
+### Containers
+* **Nginx** is a web server that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache
