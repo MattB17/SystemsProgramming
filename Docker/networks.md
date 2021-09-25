@@ -72,3 +72,6 @@ The bridge network does not have a DNS server built into it by default
 * but it is easier to just create a new network and use the default DNS on that network
 
 This gets way easier with docker compose
+
+### DNS
+Ever since Docker Engine 1.11, we can have multiple containers on a created network respond to the same DNS address

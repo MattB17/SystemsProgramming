@@ -1,5 +1,6 @@
 * `apropos` - displays a list of appropriate commands
 * `alias` - creates an alias for a command
+* `bg` - place a job in the background
 * `cat` - concatenate files
 * `cd` - change directory
 * `chgrp` - change a file's group ownership
@@ -9,6 +10,7 @@
 * `cp` - copy files and directories
 * `df` - see the current amount of free space on disk drives
 * `echo` - display a line of text
+* `fg` - place a job in the foreground
 * `file` - determine file type
 * `grep` - print lines matching a pattern
 * `head` - output the first part of a file
@@ -16,6 +18,9 @@
 * `history` - display the contents of the history list
 * `id` - display user identity
 * `info` - displays a command's info entry
+* `jobs` - list active jobs
+* `kill` - send a signal to a process
+* `killall` - kill processes by name
 * `less` - view file contents
 * `ln` - create hard and symbolic links
   * `ln file link` to create a hard link
@@ -28,6 +33,7 @@
 * `mv` - move/rename files and directories
 * `passwd` - change a user's password
 * `printenv` - print all environment variables
+* `ps` - report a snapshot of current processes
 * `ps aux` - shows all running processes
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
@@ -36,6 +42,7 @@
 * `sudo` - execute a command as another user
 * `tail` - output the last part of a file
 * `tee` - read from standard input and write to standard output and files
+* `top` - display tasks
 * `type` - indicates how a command name is interpreted
 * `umask` - set the default file permissions
 * `unalias` - remove an alias
