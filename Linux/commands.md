@@ -10,6 +10,7 @@
 * `cp` - copy files and directories
 * `df` - see the current amount of free space on disk drives
 * `echo` - display a line of text
+* `export` - export environment to subsequently executed programs
 * `fg` - place a job in the foreground
 * `file` - determine file type
 * `grep` - print lines matching a pattern
@@ -37,6 +38,7 @@
 * `ps aux` - shows all running processes
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
+* `set` - set shell options
 * `sort` - sort lines of text
 * `su` - run a shell as another user
 * `sudo` - execute a command as another user
