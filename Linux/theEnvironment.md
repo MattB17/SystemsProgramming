@@ -18,3 +18,11 @@ There are 2 kinds of shell sessions
 * a non-login shell session
   * typically occurs when we launch a terminal session in the GUI
   * they inherit the environment from their parent process, usually a login shell
+
+When we enter a command on the command line, bash does not search the whole computer for the command
+* it searches a list of directories that are contained in the PATH variable
+* `PATH=$PATH:$HOME/bin`
+  * `PATH` is modified is modified to add the director `$HOME/bin` to the end of the list
+  * now when bash searches for commands it will also search in `$HOME/bin`
+* `export PATH`
+  * tells the shell to make the contents of `PATH` available to child processes of this shell
