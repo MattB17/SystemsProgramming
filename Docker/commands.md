@@ -51,6 +51,10 @@
 ### Image Commands
 * `docker image ls`
   * list all pulled images
+* `docker image history`
+  * shows layers of changes made in image
+* `docker image inspect`
+  * returns JSON metadata about the image
 
 ### Network Commands
 * `docker network ls`

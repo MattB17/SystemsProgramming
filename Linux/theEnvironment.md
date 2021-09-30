@@ -26,3 +26,5 @@ When we enter a command on the command line, bash does not search the whole comp
   * now when bash searches for commands it will also search in `$HOME/bin`
 * `export PATH`
   * tells the shell to make the contents of `PATH` available to child processes of this shell
+
+The prompt is defined by an environment variable named PS1
