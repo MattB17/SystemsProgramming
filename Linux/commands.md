@@ -8,11 +8,17 @@
 * `chown` - change a file's owner
 * `clear` - clear the screen
 * `cp` - copy files and directories
+* `dd` - write block-oriented data directly to a device
 * `df` - see the current amount of free space on disk drives
 * `echo` - display a line of text
 * `export` - export environment to subsequently executed programs
+* `fdformat` - format a floppy disk
+* `fdisk` - partition table manipulator
 * `fg` - place a job in the foreground
 * `file` - determine file type
+* `fsck` - check and repair a filesystem
+* `genisoimage` - create an ISO 9660 image file
+  * also used as `mkisofs`
 * `grep` - print lines matching a pattern
 * `head` - output the first part of a file
 * `help` - get help for shell builtins
@@ -30,7 +36,10 @@
   * can list contents of multiple directories: `ls ~ /usr`
   * can add more details `ls -l`
 * `man` - displays a command's manual page
+* `md5sum` - calculate an MD5 checksum
 * `mkdir` - create directories
+* `mkfs` - create a filesystem
+* `mount` - mount a filesystem
 * `mv` - move/rename files and directories
 * `passwd` - change a user's password
 * `printenv` - print all environment variables
@@ -47,8 +56,11 @@
 * `top` - display tasks
 * `type` - indicates how a command name is interpreted
 * `umask` - set the default file permissions
+* `umount` - unmount a filesystem
 * `unalias` - remove an alias
 * `uniq` - report or omit repeated lines
 * `wc` - print newline, word, and byte counts for each file
 * `whatis` - displays a brief description of a command
 * `which` - displays which executable program will be executed
+* `wodim` - write data to optical storage media
+  * also used as `cdrecord`
