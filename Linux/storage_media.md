@@ -19,3 +19,21 @@ Operating systems store data that been read from, and is to be written to, stora
 Unmounting a device entails writing all the remaining data to the device so that it can be safely removed
 * if the device is removed without first being unmounted, the possibility exists that not all the data destined for the device has been transferred
 * in some cases, this data may include vital directory updates, which will lead to filesystem corruption
+
+The `fdisk` program allows us to interact directly with disk-like devices (such as hard disk drives and flash drives) at a very low level
+* with this tool we can edit, delete, and create partitions on the device
+
+`mkfs` can create filesystems in a variety of formats
+* it is short for make filesystem
+
+Each time the system boots, it routinely checks the integrity of the filesystems before mounting them
+* this is done by the `fsck` program (short for filesystem check)
+* the last number in each `/etc/fstab` entry specifies the order in which the devices are to be checked
+  * devices with a zero as the last digit are not routinely checked
+* `fsck` can also repair corrupt filesystems with varying degrees of success, depending on the amount of damage
+* on Unix-like filesystems, recovered portions of files are placed in the `lost+found` directory, located in the root of each filesystem
+* on most systems, filesystem corruption detected at boot time will cause the system to stop and direct you to run `fsck` before continuing
+
+`dd` copies blocks pf data from one place to another
+* the syntax is `dd if=<input_file> of=<output_file> [bs=<block_size> [count=<blocks>]]`
+* copy everything one one drive to another `dd if=/dev/sdb of=/dev/sdc`
