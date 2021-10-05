@@ -27,3 +27,8 @@ Copy on Write (CoW)
 * the base image is read only
 * if you are running a container and change a file that is in the image then the file is only copied to the container after the change - CoW
   * otherwise, if you are not changing the file but just reading it, you read the version stored on the image, no need to copy to container
+
+To refer to an image we use the syntax `<user>/<repo>:<tag>`
+* default tag is latest if not specified
+* official repositories live at the "root namespace" of the registry, so they don't need account name in front of repo name
+* latest tag is the default tag, but image owners should assign it to the newest stable version

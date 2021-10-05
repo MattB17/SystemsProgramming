@@ -3,6 +3,10 @@
 ### Base Commands
 * `docker`
   * lists docker commands
+* `docker login <server>`
+  * defaults to logging in Hub, but you can override by adding server URL
+* `docker logout`
+  * always logout from shared machines or servers when done, to protect your account
 * `docker version`
   * check your versions and that docker is working
 * `docker info`
@@ -55,6 +59,10 @@
   * shows layers of changes made in image
 * `docker image inspect`
   * returns JSON metadata about the image
+* `docker image tag`
+  * assigns one or more tags to an image
+* `docker image push`
+  * uploads changes layers to an image registry (default is Hub)
 
 ### Network Commands
 * `docker network ls`
