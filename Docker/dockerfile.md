@@ -2,6 +2,7 @@
 A dockerfile is a recipe for creating an image
 
 `docker-build -f <some dockerfile>`
+* `-f` is used to specify a dockerfile
 
 Each stanza is another layer in our image
 
@@ -37,3 +38,12 @@ Docker caches steps in image build, so that the next time you build the image, i
 * this gives very short build times
 * when a line changes, every line after that has to be rebuilt as well
 * typically want things that change the least at top and things that change the most at bottom
+
+Usually start with an official image in the docker file
+* then possibly make tweaks as the project gets more complex
+
+`WORKDIR <some_directory>` is basically just a `cd` into the working directory
+
+`COPY` used to copy from your local machine into your container images
+
+Some of the required commands could be included in an image you include with the `FROM` command
