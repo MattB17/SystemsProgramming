@@ -16,6 +16,7 @@
 * `fdisk` - partition table manipulator
 * `fg` - place a job in the foreground
 * `file` - determine file type
+* `find` - search for files in a directory hierarchy
 * `fsck` - check and repair a filesystem
 * `ftp` - Internet file transfer program
 * `genisoimage` - create an ISO 9660 image file
@@ -31,6 +32,7 @@
 * `killall` - kill processes by name
 * `less` - view file contents
 * `lftp` - an improved Internet file transfer program
+* `locate` - find files by name
 * `ln` - create hard and symbolic links
   * `ln file link` to create a hard link
   * `ln -s item link` to create a soft link - `item` can be a file or directory
@@ -58,11 +60,13 @@
 * `sort` - sort lines of text
 * `ssh` - OpenSSH SSHE client
   * remote login program
+* `stat` - display file or filesystem status
 * `su` - run a shell as another user
 * `sudo` - execute a command as another user
 * `tail` - output the last part of a file
 * `tee` - read from standard input and write to standard output and files
 * `top` - display tasks
+* `touch` - change file times
 * `traceroute` - print the route packets take to a network host
 * `type` - indicates how a command name is interpreted
 * `umask` - set the default file permissions
@@ -75,3 +79,4 @@
 * `which` - displays which executable program will be executed
 * `wodim` - write data to optical storage media
   * also used as `cdrecord`
+* `xargs` - build and execute command lines from standard input

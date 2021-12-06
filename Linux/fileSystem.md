@@ -52,3 +52,16 @@ Symbolic links work by creating a special type of file that contains a text poin
 Symbolic links were created to overcome the 2 disadvantages of hard links
 * hard links can't span physical devices
 * hard links can't reference directories, only files
+
+### Searching
+The `locate` program performs a rapid database search of pathnames and then outputs every name that matches a given substring
+* `locate bin/zip` searches the database of pathnames and outputs any that contain the string bin/zip
+* could also do something like `locate zip | grep bin`
+
+the `find` program searches a given directory (and its subdirectories) for files based on a variety of attributes
+* count the number of directories in the home directory: `find ~ -type d | wc -l`
+* count the number of files in the home directory: `find ~ -type f | wc -l`
+* count all JPG files larger than 1 MB: `find ~ -type f -name "*.JPG" -size +1M | wc -l`
+* `find ~ \( -type f -not -perm 0600 \) -or \( -type d -not -perm 0700 \)`
+  * find all files from home directory that are either a file without permissions 0600 or a directory without permissions 0700
+* delete files with the extension .BAK (usually used to denote backup files): `find ~ -type f -name *.BAK -delete`
