@@ -65,3 +65,38 @@ the `find` program searches a given directory (and its subdirectories) for files
 * `find ~ \( -type f -not -perm 0600 \) -or \( -type d -not -perm 0700 \)`
   * find all files from home directory that are either a file without permissions 0600 or a directory without permissions 0700
 * delete files with the extension .BAK (usually used to denote backup files): `find ~ -type f -name *.BAK -delete`
+
+### Archiving and Backup
+Data compression is the process of removing redundancy from data
+
+Compression algorithms fall into 2 general categories:
+* lossless - preserves all the data contained in the original
+* lossy - removes data as the compression is performed, to allow more compression to be applied
+
+The `gzip` program is used to compress one or more files
+* it replaces the original file with a compressed version of the file
+* `gunzip` is used to restore compressed files to their original uncompressed form
+
+The `bzip2` program is similar to `gzip` but uses a different compression algorithm
+* it achieves higher levels of compression at the cost of compression speed
+
+Archiving is the process of gathering up many files and bundling them into a single large file
+* archiving is often done as a part of system backups
+* it is also used when old data is moved from a system to some type of long-term storage
+
+A tar archive can consist of a group of separate files, one or more directory hierarchies, or a mixture of both
+* `tar cf playground.tar playground`
+  * creates a tar archive named `playground.tar` which contains the entire playground directory hierarchy
+* `tar tf playground.tar`
+  * lists the contents of the archive
+* `tar xf playground.tar`
+  * extracts the archive
+* `tar` uses relative paths instead of absolute paths
+  * so if we call `tar cf playground.tar /home/playground`
+  * then when we extract it, it will create a directory `home` and a subdirectory `playground` with all of its contents
+
+The `zip` program is both a compression tool and an archiver
+* Linux users mainly use `zip` for exchanging files with Windows systems, rather than performing compression and archiving
+
+The `rsync` program can synchronize both local and remote directories by using the rsync remote-update protocol
+* this allows `rsync` to quickly detect the differences between two directories and perform the minimum amount of copying required to bring them into sync

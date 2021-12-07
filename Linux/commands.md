@@ -1,6 +1,7 @@
 * `apropos` - displays a list of appropriate commands
 * `alias` - creates an alias for a command
 * `bg` - place a job in the background
+* `bzip2` - a block sorting file compressor
 * `cat` - concatenate files
 * `cd` - change directory
 * `chgrp` - change a file's group ownership
@@ -22,6 +23,7 @@
 * `genisoimage` - create an ISO 9660 image file
   * also used as `mkisofs`
 * `grep` - print lines matching a pattern
+* `gzip` - compress or expand files
 * `head` - output the first part of a file
 * `help` - get help for shell builtins
 * `history` - display the contents of the history list
@@ -53,6 +55,7 @@
 * `ps aux` - shows all running processes
 * `pwd` - print name of current working directory
 * `rm` - remove files and directories
+* `rsync` - remote file and directory synchronization
 * `scp` - secure copy
   * remote file copy program
 * `set` - set shell options
@@ -64,6 +67,7 @@
 * `su` - run a shell as another user
 * `sudo` - execute a command as another user
 * `tail` - output the last part of a file
+* `tar` - tape archiving utility
 * `tee` - read from standard input and write to standard output and files
 * `top` - display tasks
 * `touch` - change file times
@@ -80,3 +84,4 @@
 * `wodim` - write data to optical storage media
   * also used as `cdrecord`
 * `xargs` - build and execute command lines from standard input
+* `zip` - package and compress files
