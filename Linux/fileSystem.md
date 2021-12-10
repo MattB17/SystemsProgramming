@@ -100,3 +100,8 @@ The `zip` program is both a compression tool and an archiver
 
 The `rsync` program can synchronize both local and remote directories by using the rsync remote-update protocol
 * this allows `rsync` to quickly detect the differences between two directories and perform the minimum amount of copying required to bring them into sync
+
+`rsync` is invoked as `rsync options source destination` where source and destination are each one of the following:
+* a local file or directory
+* a remote file or directory in the form of `[user@]host:path`
+* a remote rsync server specified with a URI of `rsync://[user@]host[:port]/path`
