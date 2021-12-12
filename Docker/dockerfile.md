@@ -47,3 +47,37 @@ Usually start with an official image in the docker file
 `COPY` used to copy from your local machine into your container images
 
 Some of the required commands could be included in an image you include with the `FROM` command
+
+Usually when you run a clean command you want to run it on the same line as the actual install so that it removes everything all at the same time
+* and you only get one image layer
+
+### Example
+```
+# downloads the image
+FROM node:6-alpine
+
+# exposes port 3000
+`EXPOSE 3000`
+
+# install tini
+RUN apk add --update tini
+
+# creates a directory for app files
+RUN mkdir -p /usr/src/app
+
+# changes working directory to /usr/src/app and copies package.json
+# from local to the working directory on the container
+WORKDIR /usr/src/app
+COPY package.json package.json
+
+# installs dependencies and cleans after
+# done in 1 line to avoid 2 separate images and remove unnecessary parts
+RUN npm install && npm cache clean --force
+
+# copies all files from current directory on local to working directory
+# on container
+COPY . .
+
+# Starts the container with command '/sbin/tini -- node ./bin/www'
+CMD ["tini", "--", "node", "./bin/www"]
+```

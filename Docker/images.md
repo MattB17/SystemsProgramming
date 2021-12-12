@@ -32,3 +32,10 @@ To refer to an image we use the syntax `<user>/<repo>:<tag>`
 * default tag is latest if not specified
 * official repositories live at the "root namespace" of the registry, so they don't need account name in front of repo name
 * latest tag is the default tag, but image owners should assign it to the newest stable version
+
+### Pruning
+Can use `prune` commands to clean up images, volumes, build cache, and containers
+* `docker image prune` to clean up just "dangling" images
+* `docker system prune` will clean up everything
+* `docker image prune -a` will remove all images you are not using
+* `docker system df` is used to see space usage
