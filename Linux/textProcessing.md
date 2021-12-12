@@ -27,3 +27,25 @@ Regular expression metacharacters
   * `-` is used to indicate a character range
     * `grep -h '^[A-Z]' dirlist*.txt` matches all lines that start with an uppercase character
     * `grep -h '^[A-Za-z0-9]' dirlist*.txt` matches all lines that begin with a letter or number
+* alternation
+  * the facility that allows a match to occur from among a set of expressions
+  * it allows matches from a set of strings or other regular expressions
+  * `echo "AAA" | grep -E 'AAA|BBB'` matches either string AAA or string BBB
+  * `grep -Eh '^(bz|gz|zip)' dirlist*.txt` matches filenames that start with either `bz`, `gz`, or `zip`
+* quantifiers
+  * `?` - match an element zero times or one time
+    * `echo "(555) 123-4567" | grep -E '^\(?[0-9][0-9][0-9]\)? [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]$'` matches phone numbers of the form `(nnn) nnn-nnnn` or `nnn nnn-nnnn`
+  * `*` - match and element zero or more times
+    * `echo "This works." | grep -E [[:upper:]][[:upper:][:lower:]]*\.` matches sentences that start with an upper case letter `[[:upper:]]`, have any number of additional upper or lower case characters `[[:upper:][:lower:]]*`, and ends with a period `\.`
+  * `+` - match an element one or more times
+    * pretty much the same as `*` but needs at least 1 match
+    * `echo "This that" | grep -E '^([[:alpha:]]+ ?)+$'` matches lines consisting of one or more alphabet characters `[[:alpha:]]+` separated by single spaces ` ?`
+  * `{}` - match an element a specific number of times
+    * `echo "(555) 123-4567" | grep -E '^\(?[0-9]{3}\)? [0-9]{3}-[0-9]{4}$'` matches same phone numbers as before
+
+The `find` command supports a test based on a regular expression
+* `grep` will print a line when the line contains a string that matches an expression
+* `find` requires that the pathname exactly match the regular expression
+* `find . -regex '.*[^-_./0-9a-zA-Z].*'` find every pathname that contains any character that is not a member of the set `[-_./0-9a-zA-Z]`
+
+The `locate` program supports both basic (the `--regexp` option) and extended (the `--regex` option) regular expressions
