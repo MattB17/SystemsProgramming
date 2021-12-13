@@ -64,6 +64,10 @@
 * `docker image push`
   * uploads changes layers to an image registry (default is Hub)
 
+### Volume Commands
+* `docker volume create`
+  * required to do this before `docker run` to use custom drivers and labels
+
 ### Network Commands
 * `docker network ls`
   * list all the networks that have been created
@@ -94,3 +98,5 @@
   * publishing ports is always in `HOST:CONTAINER` format
 * `--format`
   * a common option for formatting the output of commands using "Go templates"
+* `-v`
+  * specify a named volume

@@ -1,4 +1,4 @@
-# Text Processing
+# Text
 
 ### Regular Expressions
 Regular expressions are symbolic notations used to identify patterns in text
@@ -49,3 +49,5 @@ The `find` command supports a test based on a regular expression
 * `find . -regex '.*[^-_./0-9a-zA-Z].*'` find every pathname that contains any character that is not a member of the set `[-_./0-9a-zA-Z]`
 
 The `locate` program supports both basic (the `--regexp` option) and extended (the `--regex` option) regular expressions
+
+### Text Processing

@@ -1,16 +1,20 @@
 * `apropos` - displays a list of appropriate commands
 * `alias` - creates an alias for a command
+* `aspell` - interactive spell checker
 * `bg` - place a job in the background
 * `bzip2` - a block sorting file compressor
-* `cat` - concatenate files
+* `cat` - concatenate files and print on the standard output
 * `cd` - change directory
 * `chgrp` - change a file's group ownership
 * `chmod` - change a file's mode
 * `chown` - change a file's owner
 * `clear` - clear the screen
+* `comm` - compare two sorted files line by line
 * `cp` - copy files and directories
+* `cut` - remove sections from each line of files
 * `dd` - write block-oriented data directly to a device
 * `df` - see the current amount of free space on disk drives
+* `diff` - compare files line by line
 * `echo` - display a line of text
 * `export` - export environment to subsequently executed programs
 * `fdformat` - format a floppy disk
@@ -30,6 +34,7 @@
 * `id` - display user identity
 * `info` - displays a command's info entry
 * `jobs` - list active jobs
+* `join` - join lines of two files on a common field
 * `kill` - send a signal to a process
 * `killall` - kill processes by name
 * `less` - view file contents
@@ -49,6 +54,8 @@
 * `mv` - move/rename files and directories
 * `netstat` - print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
 * `passwd` - change a user's password
+* `paste` - merge lines of files
+* `patch` - apply a diff file to an original
 * `ping` - send an ICMP ECHO_REQUEST to network hosts
 * `printenv` - print all environment variables
 * `ps` - report a snapshot of current processes
@@ -58,6 +65,7 @@
 * `rsync` - remote file and directory synchronization
 * `scp` - secure copy
   * remote file copy program
+* `sed` - stream editor for filtering and transforming text
 * `set` - set shell options
 * `sftp` - secure file transfer program
 * `sort` - sort lines of text
@@ -71,6 +79,7 @@
 * `tee` - read from standard input and write to standard output and files
 * `top` - display tasks
 * `touch` - change file times
+* `tr` - translate or delete characters
 * `traceroute` - print the route packets take to a network host
 * `type` - indicates how a command name is interpreted
 * `umask` - set the default file permissions
