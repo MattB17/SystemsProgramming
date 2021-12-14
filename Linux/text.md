@@ -51,3 +51,16 @@ The `find` command supports a test based on a regular expression
 The `locate` program supports both basic (the `--regexp` option) and extended (the `--regex` option) regular expressions
 
 ### Text Processing
+`cat -ns foo.txt` numbers the lines of `foo.txt` (`n` option) and compresses multiple consecutive blank lines to a single blank line (`s` option)
+
+`sort file1.txt file2.txt file3.txt > final_sorted_list.txt` merges the files `file1.txt`, `file2.txt`, and `file3.txt` into a single sorted file
+
+`ls -l /usr/bin | sort -nr -k 5 | head` sort the contents of `ls -l /usr/bin` numerically in reverse order according to the 5th field (file size) and display the top 10
+* so this equates to looking at the 10 largest files/directories
+
+`sort -k 3.7nbr -k 3.1nbr -k 3.4nbr distros.txt`
+* sort starting from the 7th position in the 3rd field (`-k 3.7`), then the 1st position in the 3rd field, then the 4th position in the 3rd field
+* the `nbr` option is to sort numerically (`n`), ignoring leading blank spaces (`b`), and in reverse order (`r`)
+
+For `uniq` to work, the input must first be sorted
+* `sort foo.txt | uniq`
