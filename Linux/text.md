@@ -64,3 +64,9 @@ The `locate` program supports both basic (the `--regexp` option) and extended (t
 
 For `uniq` to work, the input must first be sorted
 * `sort foo.txt | uniq`
+
+`cut` is best used to extract text from files that are produced by other programs, rather than text directly typed by humans
+* `cut -f 3 distros.txt` - extracts the third field from `distros.txt` where the default delimiter is tab
+  * say this produces dates in the form `dd/mm/yyyy`
+  * then the command `cut -f 3 distros.txt | cut -c 7-10` extracts the year
+* `cut -d ':' -f 1 /etc/passwd | head` extracts the first field from `/etc/passwd`, assuming the file is delimited by `':'`

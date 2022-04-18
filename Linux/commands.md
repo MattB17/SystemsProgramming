@@ -12,6 +12,8 @@
 * `comm` - compare two sorted files line by line
 * `cp` - copy files and directories
 * `cut` - remove sections from each line of files
+  * extract a section of text from a line and output the extracted section to standard output
+  * it can accept multiple file arguments or inputs from standard input
 * `dd` - write block-oriented data directly to a device
 * `df` - see the current amount of free space on disk drives
 * `diff` - compare files line by line
